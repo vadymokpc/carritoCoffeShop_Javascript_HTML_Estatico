@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carrito</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body>
+    <header id="header" class="header" style="background-color:white">
+        <div class=" container">
+            <div class="row">
+                <div class="four columns">
+                    <!-- <img src="img/logo.jpg" id="logo"> -->
+                </div>
+                <div class="two columns u-pull-right"">
+                    <ul>
+                        <li class=" submenu">
+                    <img src="img/cart.png" id="img-carrito">
+                    <div id="carrito">
+
+                        <table id="lista-carrito" class="u-full-width">
+                            <thead>
+                                <tr>
+                                    <th>Imagen</th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>Cantidad</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            <tr id="total-carrito"></tr>
+                            <tr id="gastos-envio"></tr>
+                        </table>
+
+                        <a href="#" id="vaciar-carrito" class="button u-full-width">Vaciar Carrito</a>
+                    </div>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div id="hero">
+        <div class="container">
+            <div class="row">
+                <div class="six columns">
+                    <div class="contenido-hero">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="barra">
+        <div class="container">
+            <div class="row">
+                <div class="four columns icono icono1">
+                    <p>Selección de los mejores cafés del mundo recién tostados<br>
+                        potenciando de manera óptima todas sus cualidades</p>
+                </div>
+                <div class="four columns icono icono2">
+                    <p>Variedades elaboradas por nuestros Maestros Tostadores <br>
+                        que hacen de nuestra selección un café de artesanos </p>
+                </div>
+                <div class="four columns icono icono3">
+                    <p>Sabemos de la importancia del café en tú negocio. <br>
+                        No dudes en trabajar con los mejores cafés recién tostados </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="lista-articulos" class="container">
+        <h1 id="encabezado" class="encabezado">Elige tú café</h1>
+
+        <div class="row">
+
+            <div class="four columns">
+                <!--.card 1-->
+                <div class="card">
+                    <img src="img/lavazza-brasile.jpg" class="imagen-articulo u-full-width">
+                    <div class="info-card">
+                        <h4>Lavazza Brasile (1Kg.)</h4>
+                        <p>Arábica y Robusta</p>
+                        <img src="img/estrellas.png">
+                        <p class="precio">20€ <span class="u-pull-right ">15€</span></p>
+                        <a href="#" class="u-full-width button-primary button input agregar-carrito" data-id="1">Agregar
+                            Al Carrito</a>
+                    </div>
+                </div>
+                <!--.card 1-->
+            </div>
+
+            <div class="four columns">
+                <!--.card 2-->
+                <div class="card">
+                    <img src="img/lavazza-colombia.jpg" class="imagen-articulo u-full-width">
+                    <div class="info-card">
+                        <h4>Lavazza Colombia (1Kg.)</h4>
+                        <p>100% Arábica Premium</p>
+                        <img src="img/estrellas.png">
+                        <p class="precio">20€ <span class="u-pull-right ">15€</span></p>
+                        <a href="#" class="u-full-width button-primary button input agregar-carrito" data-id="2">Agregar
+                            Al Carrito</a>
+                    </div>
+                </div>
+                <!--.card 2-->
+            </div>
+
+            <div class="four columns">
+                <!--.card 3-->
+                <div class="card">
+                    <img src="img/lavazza-cremoso.jpg" class="imagen-articulo u-full-width">
+                    <div class="info-card">
+                        <h4>Lavazza Cremoso (1Kg.)</h4>
+                        <p>70% Arábica y 30% Robusta</p>
+                        <img src="img/estrellas.png">
+                        <p class="precio">20€ <span class="u-pull-right ">15€</span></p>
+                        <a href="#" class="u-full-width button-primary button input agregar-carrito" data-id="3">Agregar
+                            Al Carrito</a>
+                    </div>
+                </div>
+                <!--.card 3-->
+            </div>
+
+        </div>
+        <!--.row-->
+        <div class="row">
+
+            <div class="four columns">
+                <!--.card 4-->
+                <div class="card">
+                    <img src="img/lavazza-gustoso.jpg" class="imagen-articulo u-full-width">
+                    <div class="info-card">
+                        <h4>Lavazza Gustoso (1Kg.)</h4>
+                        <p>Arábica y Robusta</p>
+                        <img src="img/estrellas.png">
+                        <p class="precio">20€ <span class="u-pull-right ">15€</span></p>
+                        <a href="#" class="u-full-width button-primary button input agregar-carrito" data-id="4">Agregar
+                            Al Carrito</a>
+                    </div>
+                </div>
+                <!--.card 4-->
+            </div>
+
+            <div class="four columns">
+                <!--.card 5-->
+                <div class="card">
+                    <img src="img/lavazza-intenso.jpg" class="imagen-articulo u-full-width">
+                    <div class="info-card">
+                        <h4>Lavazza Intenso (1Kg.)</h4>
+                        <p>60% Arábica y 40% Robusta</p>
+                        <img src="img/estrellas.png">
+                        <p class="precio">20€ <span class="u-pull-right ">15€</span></p>
+                        <a href="#" class="u-full-width button-primary button input agregar-carrito" data-id="5">Agregar
+                            Al Carrito</a>
+                    </div>
+                </div>
+                <!--.card 5-->
+            </div>
+
+            <div class="four columns">
+                <!--.card 6-->
+                <div class="card">
+                    <img src="img/lavazza-topclass.jpg" class="imagen-articulo u-full-width">
+                    <div class="info-card">
+                        <h4>Lavazza Topclass (1Kg.)</h4>
+                        <p>70% Arábica y 20% Robusta</p>
+                        <img src="img/estrellas.png">
+                        <p class="precio">20€ <span class="u-pull-right ">15€</span></p>
+                        <a href="#" class="u-full-width button-primary button input agregar-carrito" data-id="6">Agregar
+                            Al Carrito</a>
+                    </div>
+                </div>
+                <!--.card 6-->
+            </div>
+
+        </div>
+        <!--.row-->
+        <div class="row">
+
+            <div class="four columns">
+                <!--.card 7-->
+                <div class="card">
+                    <img src="img/novell-dekaff-respons.jpg" class="imagen-articulo u-full-width">
+                    <div class="info-card">
+                        <h4>Novell Dekaff (1Kg.)</h4>
+                        <p>30% Arábica y 70% Robusta</p>
+                        <img src="img/estrellas.png">
+                        <p class="precio">20€ <span class="u-pull-right ">15€</span></p>
+                        <a href="#" class="u-full-width button-primary button input agregar-carrito" data-id="7">Agregar
+                            Al Carrito</a>
+                    </div>
+                </div>
+                <!--.card 7-->
+            </div>
+
+            <div class="four columns">
+                <!--.card 8-->
+                <div class="card">
+                    <img src="img/novell-excelsior-plus.jpg" class="imagen-articulo u-full-width">
+                    <div class="info-card">
+                        <h4>Novell Excelsior (1Kg.)</h4>
+                        <p>100% Robusta</p>
+                        <img src="img/estrellas.png">
+                        <p class="precio">20€ <span class="u-pull-right ">15€</span></p>
+                        <a href="#" class="u-full-width button-primary button input agregar-carrito" data-id="8">Agregar
+                            Al Carrito</a>
+                    </div>
+                </div>
+                <!--.card 8-->
+            </div>
+
+            <div class="four columns">
+                <!--.card 9-->
+                <div class="card">
+                    <img src="img/novell-gourmet-respons.jpg" class="imagen-articulo u-full-width">
+                    <div class="info-card">
+                        <h4>Novell Gourmet (1Kg.)</h4>
+                        <p>Arábica y Robusta</p>
+                        <img src="img/estrellas.png">
+                        <p class="precio">20€ <span class="u-pull-right ">15€</span></p>
+                        <a href="#" class="u-full-width button-primary button input agregar-carrito" data-id="9">Agregar
+                            Al Carrito</a>
+                    </div>
+                </div>
+                <!--.card 9-->
+            </div>
+
+        </div>
+        <!--.row-->
+        <div class="row">
+
+            <div class="four columns">
+                <!--.card 10-->
+                <div class="card">
+                    <img src="img/novell-honduras.jpg" class="imagen-articulo u-full-width">
+                    <div class="info-card">
+                        <h4>Novell Honduras (1Kg.)</h4>
+                        <p>100% Robusta</p>
+                        <img src="img/estrellas.png">
+                        <p class="precio">20€ <span class="u-pull-right ">15€</span></p>
+                        <a href="#" class="u-full-width button-primary button input agregar-carrito"
+                            data-id="10">Agregar Al Carrito</a>
+                    </div>
+                </div>
+                <!--.card 10-->
+            </div>
+
+            <div class="four columns">
+                <!--.card 11-->
+                <div class="card">
+                    <img src="img/novell-mocca-org.jpg" class="imagen-articulo u-full-width">
+                    <div class="info-card">
+                        <h4>Novell Mocca (1Kg.)</h4>
+                        <p>100% Arábica Premium</p>
+                        <img src="img/estrellas.png">
+                        <p class="precio">20€ <span class="u-pull-right ">15€</span></p>
+                        <a href="#" class="u-full-width button-primary button input agregar-carrito"
+                            data-id="11">Agregar Al Carrito</a>
+                    </div>
+                </div>
+                <!--.card 11-->
+            </div>
+
+            <div class="four columns">
+                <!--.card 12-->
+                <div class="card">
+                    <img src="img/novell-rwanda.jpg" class="imagen-articulo u-full-width">
+                    <div class="info-card">
+                        <h4>Novell Rwanda (1Kg.)</h4>
+                        <p>70% Arábica y 30% Robusta</p>
+                        <img src="img/estrellas.png">
+                        <p class="precio">20€ <span class="u-pull-right ">15€</span></p>
+                        <a href="#" class="u-full-width button-primary button input agregar-carrito"
+                            data-id="12">Agregar Al Carrito</a>
+                    </div>
+                </div>
+                <!--.card 12-->
+            </div>
+
+        </div>
+        <!--.row-->
+    </div>
+
+    <!--.footer-->
+    <footer id="footer" class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="four columns">
+                    <nav id="principal" class="menu">
+                        <a class="enlace" href="#">CONTACTO</a>
+                        <a class="enlace" href="#">Avenida Diagonal 93, </a>
+                        <a class="enlace" href="#">08019 (Barcelona), España</a>
+                        <a class="enlace" href="#">vadimokpc@gmail.com</a>
+                    </nav>
+                </div>
+                <div class="four columns">
+                    <nav id="secundaria" class="menu">
+                        <a class="enlace" href="#">Condiciones de uso</a>
+                        <a class="enlace" href="#">Política de privacidad</a>
+                        <a class="enlace" href="#">Política de cookies</a>
+                        <a class="enlace" href="#">Aviso legal</a>
+                    </nav>
+                </div>
+                <div class="four columns">
+                    <nav id="secundaria" class="menu">
+                        <a class="enlace" href="#">Política de devoluciones</a>
+                        <a class="enlace" href="#">Envíos</a>
+                        <a class="enlace" href="#">FAQs</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--.footer-->
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
