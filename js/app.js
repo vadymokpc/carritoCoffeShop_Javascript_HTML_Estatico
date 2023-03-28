@@ -12,10 +12,13 @@ function cargarEventListeners() {
     listaArticulos.addEventListener("click", agregarArticulo);
 
     // Sumar 1 articulo que ya esta en el carrito
-    carrito.addEventListener("click", sumarArticulo);
+    /*  carrito.addEventListener("click", sumarArticulo); */
 
     // Elimina 1 articulo del carrito
     carrito.addEventListener("click", eliminarArticulo);
+
+    // Resta 1 articulo ya añadido
+    carrito.addEventListener("click", restarArticulo);
 
     // Muestra los articulos de Local Storage
     document.addEventListener("DOMContentLoaded", () => {
@@ -42,6 +45,8 @@ function agregarArticulo(e) {
     }
 };
 
+/* --------------------------------------------------------------------------------------------------------------------------------------- */
+
 // Elimina 1 articulo del carrito, primero identificamos la clase del elemento al que vamos a clicar para eliminar con  console.log(e.target.classList);
 
 function eliminarArticulo(e) {
@@ -55,6 +60,32 @@ function eliminarArticulo(e) {
         carritoHTML();
     }
 };
+/* --------------------------------------------------------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------------------------------------------------------------- */
+
+// En desarollo
+/* function restarArticulo(e) {
+    leerDatosArticulo(articulo);
+    const infoArticulo = {
+        imagen: articulo.querySelector("img").src,
+        titulo: articulo.querySelector("h4").textContent,
+        precio: parseInt(articulo.querySelector(".precio span").textContent),
+        id: articulo.querySelector("a").getAttribute("data-id"),
+        cantidad: 1
+    }
+    // Debemos acceder al id del articulo que queremos eliminar para que nos borre exactamente ese, usamos console.log(e.target.getAttribute("data-id"));
+    if (e.target.classList.contains("restar-articulo")) {
+        const articuloId = e.target.getAttribute("data-id");
+
+        // Elimina del array de articulosCarrito por el data-id
+        articulosCarrito = infoArticulo.cantidad - 1;
+
+        carritoHTML();
+    }
+}; */
+// En desarollo
+
+/* --------------------------------------------------------------------------------------------------------------------------------------- */
 
 // Despues de clicar "agregar-carrito", guardamos en un objeto (La imagen, el nombre, el precio, el id HTML y la cantidad)
 function leerDatosArticulo(articulo) {
@@ -131,7 +162,7 @@ function leerDatosArticulo(articulo) {
         }
     });
     console.log(`La suma del pedido acumula: ${totalPedido}€, articulos repetidos ${articulosRepetidos}, Gastos de envio ${gastosEnvio}€`);
-
+    // Total carrito
     /* --------------------------------------------------------------------------------------------------------------------------------------- */
     console.log(articulosCarrito);
     carritoHTML();
