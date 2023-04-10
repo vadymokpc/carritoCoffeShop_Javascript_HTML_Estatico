@@ -12,18 +12,17 @@ function cargarEventListeners() {
     listaArticulos.addEventListener("click", agregarArticulo);
 
     // Sumar 1 articulo que ya esta en el carrito
-    /*  carrito.addEventListener("click", sumarArticulo); */
-
-    // Elimina 1 articulo del carrito
-    carrito.addEventListener("click", eliminarArticulo);
+    carrito.addEventListener("click", sumarArticulo);
 
     // Resta 1 articulo ya añadido
     carrito.addEventListener("click", restarArticulo);
 
+    // Elimina 1 articulo del carrito
+    carrito.addEventListener("click", eliminarArticulo);
+
     // Muestra los articulos de Local Storage
     document.addEventListener("DOMContentLoaded", () => {
         articulosCarrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
         carritoHTML();
     })
 
@@ -56,35 +55,10 @@ function eliminarArticulo(e) {
 
         // Elimina del array de articulosCarrito por el data-id
         articulosCarrito = articulosCarrito.filter(articulo => articulo.id !== articuloId);
-
+        gastosEnvio();
         carritoHTML();
     }
 };
-/* --------------------------------------------------------------------------------------------------------------------------------------- */
-/* --------------------------------------------------------------------------------------------------------------------------------------- */
-
-// En desarollo
-/* function restarArticulo(e) {
-    leerDatosArticulo(articulo);
-    const infoArticulo = {
-        imagen: articulo.querySelector("img").src,
-        titulo: articulo.querySelector("h4").textContent,
-        precio: parseInt(articulo.querySelector(".precio span").textContent),
-        id: articulo.querySelector("a").getAttribute("data-id"),
-        cantidad: 1
-    }
-    // Debemos acceder al id del articulo que queremos eliminar para que nos borre exactamente ese, usamos console.log(e.target.getAttribute("data-id"));
-    if (e.target.classList.contains("restar-articulo")) {
-        const articuloId = e.target.getAttribute("data-id");
-
-        // Elimina del array de articulosCarrito por el data-id
-        articulosCarrito = infoArticulo.cantidad - 1;
-
-        carritoHTML();
-    }
-}; */
-// En desarollo
-
 /* --------------------------------------------------------------------------------------------------------------------------------------- */
 
 // Despues de clicar "agregar-carrito", guardamos en un objeto (La imagen, el nombre, el precio, el id HTML y la cantidad)
@@ -121,61 +95,12 @@ function leerDatosArticulo(articulo) {
     }
     /* Actualizar solo la cantidad si compramos mas de uno igual */
 
-    /* --------------------------------------------------------------------------------------------------------------------------------------- */
-    // Total carrito
+    gastosEnvio();
 
-    let totalPedido = 0;
-    let articulosRepetidos = 0;
-    let gastosEnvio = 0;
-
-    articulosCarrito.forEach(function (articulo) {
-
-        totalPedido += articulo.precio;
-
-        if (articulo.cantidad >= 1) {
-            totalPedido += articulo.precio * articulo.cantidad - articulo.precio;
-            document.querySelector("#total-carrito").innerHTML =
-                `Total pedido ${totalPedido}€`;
-        }
-        console.log(articulo.cantidad);
-        console.log(totalPedido);
-        console.log(`Gastos envio: ${gastosEnvio}`);
-
-        if (articulo.cantidad > 1) {
-            articulosRepetidos += articulo.cantidad;
-        }
-        if (totalPedido < 30) {
-            gastosEnvio = 10;
-            totalPedido = totalPedido + gastosEnvio;
-            document.querySelector("#total-carrito").innerHTML =
-                `Total pedido ${totalPedido}€`;
-            document.querySelector("#gastos-envio").innerHTML =
-                `10€ de gastos de envio en pedidos inferiores a 30€`;
-        }
-        if (totalPedido >= 30) {
-            totalPedido = totalPedido - gastosEnvio;
-            gastosEnvio = 0;
-            document.querySelector("#total-carrito").innerHTML =
-                `Total pedido ${totalPedido}€`;
-            document.querySelector("#gastos-envio").innerHTML =
-                `Gastos de envio ${gastosEnvio}€`;
-        }
-    });
-    console.log(`La suma del pedido acumula: ${totalPedido}€, articulos repetidos ${articulosRepetidos}, Gastos de envio ${gastosEnvio}€`);
-    // Total carrito
     /* --------------------------------------------------------------------------------------------------------------------------------------- */
     console.log(articulosCarrito);
     carritoHTML();
 };
-
-function sumarArticulo(e) {
-    if (e.target.classList.contains("sumar-articulo")) {
-        console.log("Sumando articulo...");
-        /* totalPedido = totalPedido + articulo.precio;
-        articulo.cantidad++; */
-    }
-}
-
 
 // Muestra el carrito de compras en el HTML
 function carritoHTML() {
@@ -212,6 +137,36 @@ function carritoHTML() {
     // Guardar el carrito en local storage 
     sincronizarStorage();
 }
+
+function sumarArticulo(e) {
+    if (e.target.classList.contains("sumar-articulo")) {
+        let articuloId = e.target.getAttribute("data-id");
+        let articulo = articulosCarrito.find(elemento => elemento.id === articuloId)
+        if (articulo.cantidad >= 1) {
+            articulo.cantidad++;
+        }
+        gastosEnvio();
+        carritoHTML();
+        console.log(articulo);
+    }
+}
+
+function restarArticulo(e) {
+    console.log(e.target);
+    if (e.target.classList.contains("restar-articulo")) {
+        let articuloId = e.target.getAttribute("data-id");
+        let articulo = articulosCarrito.find(elemento => elemento.id === articuloId)
+        if (articulo.cantidad > 1) {
+            articulo.cantidad--;
+        }
+        gastosEnvio();
+        carritoHTML();
+        console.log(articulo);
+    }
+
+};
+console.log(articulosCarrito);
+
 // Guardar el carrito en local storage 
 function sincronizarStorage() {
     localStorage.setItem("carrito", JSON.stringify(articulosCarrito));
@@ -223,4 +178,51 @@ function limpiarHTMLCarrito() {
     while (contenedorCarrito.firstChild) {
         contenedorCarrito.removeChild(contenedorCarrito.firstChild)
     }
+}
+
+function gastosEnvio() {
+
+    let totalPedido = 0;
+    let articulosRepetidos = 0;
+    let gastosEnvio = 0;
+
+    if (!articulosCarrito.length) {
+        document.querySelector("#total-carrito").innerHTML = "";
+        document.querySelector("#gastos-envio").innerHTML = "";
+    }
+
+    articulosCarrito.forEach(function (articulo) {
+
+        totalPedido += articulo.precio;
+
+        if (articulo.cantidad >= 1) {
+            totalPedido += articulo.precio * articulo.cantidad - articulo.precio;
+            document.querySelector("#total-carrito").innerHTML =
+                `Total pedido ${totalPedido}€`;
+        }
+        console.log(articulo.cantidad);
+        console.log(totalPedido);
+        console.log(`Gastos envio: ${gastosEnvio}`);
+
+        if (articulo.cantidad > 1) {
+            articulosRepetidos += articulo.cantidad;
+        }
+        if (totalPedido < 30) {
+            gastosEnvio = 10;
+            totalPedido = totalPedido + gastosEnvio;
+            document.querySelector("#total-carrito").innerHTML =
+                `Total pedido ${totalPedido}€`;
+            document.querySelector("#gastos-envio").innerHTML =
+                `10€ de gastos de envio en pedidos inferiores a 30€`;
+        }
+        if (totalPedido >= 30) {
+            totalPedido = totalPedido - gastosEnvio;
+            gastosEnvio = 0;
+            document.querySelector("#total-carrito").innerHTML =
+                `Total pedido ${totalPedido}€`;
+            document.querySelector("#gastos-envio").innerHTML =
+                `Gastos de envio ${gastosEnvio}€`;
+        }
+    });
+    console.log(`La suma del pedido acumula: ${totalPedido}€, articulos repetidos ${articulosRepetidos}, Gastos de envio ${gastosEnvio}€`);
 }
